@@ -75,12 +75,12 @@ class CouponDispenser:
         """
 
         if not self.coupon_cards:
-            return "The box is empty"
+            return "The box is empty."
         
         if name in self.customer_roster:
             indexed_roster = self.customer_roster.index(name)
             indexof_coupon = self.issued_indices[indexed_roster]
-            return self.coupon_cards[indexof_coupon]
+            return f"That name already has a coupon: {self.coupon_cards[indexof_coupon]}"
         
         else:
             random_index = random.randint(0, len(self.coupon_cards)-1)
@@ -107,11 +107,10 @@ class CouponDispenser:
         flag = True
 
         while flag: 
-            user_prompt = input(f"Round {round_number} - Enter a name (or a comma-seperated list), or type 'show' or 'exit': ")
+            user_prompt = input(f"Round {round_number} - Enter a name (or a comma-separated list), or type 'show' or 'exit': ")
             if user_prompt == "show":
                 for i in range(len(self.customer_roster)):
                     print(f"{self.customer_roster[i]}: {self.coupon_cards[self.issued_indices[i]]}")
-                round_number += 1
             elif user_prompt == "exit":
                 print("Goodbye!") 
                 flag = False 
@@ -122,7 +121,8 @@ class CouponDispenser:
                     if name:
                         coupon = self.issue_coupon(name)
                         print(coupon)
-            round_number += 1
+            if flag:
+                round_number += 1
 
     def tally_distribution(self):
         """
@@ -151,15 +151,14 @@ def main():
       - Start the interaction via distribute_session()
       - After exit, call tally_distribution() to print the distribution in the terminal
     """
+
     coupon_cards = [
-        "10% off",
+        "10$ off",
         "Free small coffee",
         "Buy 1 get 1 half off",
         "Free extra espresso shot",
-    ]
+        ]
 
-    # Uncomment the lines below as you implement each function.
-    
     box = CouponDispenser(coupon_cards)
     box.distribute_session()
     box.tally_distribution()
