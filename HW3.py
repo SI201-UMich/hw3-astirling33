@@ -75,7 +75,7 @@ class CouponDispenser:
         """
 
         if not self.coupon_cards:
-            return ""
+            return "The box is empty"
         
         if name in self.customer_roster:
             indexed_roster = self.customer_roster.index(name)
@@ -83,7 +83,7 @@ class CouponDispenser:
             return self.coupon_cards[indexof_coupon]
         
         else:
-            random_index = random.random_int(0, len(self.coupon_cards)-1)
+            random_index = random.randint(0, len(self.coupon_cards)-1)
             self.customer_roster.append(name)
             self.issued_indices.append(random_index)
             return self.coupon_cards[random_index]
@@ -103,7 +103,26 @@ class CouponDispenser:
 
         Reminder: Use lists only (no dictionaries).
         """
-        CouponDispenser
+        round_number = 1
+        flag = True
+
+        while flag: 
+            user_prompt = input(f"Round {round_number} - Enter a name (or a comma-seperated list), or type 'show' or 'exit': ")
+            if user_prompt == "show":
+                for i in range(len(self.customer_roster)):
+                    print(f"{self.customer_roster[i]}: {self.coupon_cards[self.issued_indices[i]]}")
+                round_number += 1
+            elif user_prompt == "exit":
+                print("Goodbye!") 
+                flag = False 
+            else: 
+                new_names = user_prompt.split(",")
+                for name in new_names:
+                    name = name.strip()
+                    if name:
+                        coupon = self.issue_coupon(name)
+                        print(coupon)
+            round_number += 1
 
     def tally_distribution(self):
         """
@@ -140,10 +159,11 @@ def main():
     ]
 
     # Uncomment the lines below as you implement each function.
-    # box = CouponDispenser(coupon_cards)
-    # box.distribute_session()
-    # box.tally_distribution()
-    pass
+    
+    box = CouponDispenser(coupon_cards)
+    box.distribute_session()
+    box.tally_distribution()
+
 
 
 # -----------------------
