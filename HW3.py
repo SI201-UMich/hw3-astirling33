@@ -1,10 +1,15 @@
 # Name: Arden Stirling
 # Student ID: 8531 6564
 # Email: starden@umich.edu
-# Who or what you worked with on this homework (including generative AI like ChatGPT): 
-# no one, I used ai with this prompt "do not give me code, but help me debug and suggest the general structure of the code"
-# This aligns with my GenAI contract because I did not ask for actual code.
-
+# Who or what you worked with on this homework (including generative AI like ChatGPT):
+# I talked a little bit with my brother who is doing a cs degree, he told me to use the flag
+# variable in distribute_session and helped with some logic.
+# I used GitHub Copilot to help debug syntax errors and help me with the logic behind  
+# methods. I did not ask for complete code generation, instead, I asked for hints on 
+# how to structure loops, handle user input, and manage list operations. I turned off inline
+# suggestions keeping copilot on ask mode and always trying to debug and work on the code myself first.  
+# This use aligns with my GenAI contract because I focused on understanding the problem 
+# and implementing the solution myself, with AI providing guidance rather than code.
 
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.: 
